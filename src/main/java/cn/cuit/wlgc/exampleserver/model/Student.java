@@ -12,4 +12,11 @@ public class Student extends Model<Student> {
     public Student() {
         super(STUDENT_CACHE, TABLE_NAME);
     }
+
+    public Student login() {
+        String sql = "SELECT * FROM " + TABLE_NAME
+                + " WHERE stuPass = ? AND stuId = ?";
+        return this
+                .findFirst(sql, this.getStr("stuPass"), this.getStr("stuId"));
+    }
 }

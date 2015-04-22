@@ -3,6 +3,7 @@ package cn.cuit.wlgc.exampleserver.common;
 import cn.cuit.wlgc.exampleserver.controller.BasicController;
 import cn.cuit.wlgc.exampleserver.controller.LessonController;
 import cn.cuit.wlgc.exampleserver.controller.ScoreController;
+import cn.cuit.wlgc.exampleserver.controller.StudentController;
 import cn.cuit.wlgc.exampleserver.controller.TeacherController;
 import cn.cuit.wlgc.exampleserver.controller.TestController;
 import cn.cuit.wlgc.exampleserver.controller.TestPageController;
@@ -50,6 +51,7 @@ public class Config extends JFinalConfig {
         me.add("/", BasicController.class);
         me.add("/testpage", TestPageController.class);
         me.add("/score", ScoreController.class);
+        me.add("/student", StudentController.class);
     }
 
     public void configPlugin(Plugins me) {
@@ -64,7 +66,8 @@ public class Config extends JFinalConfig {
         ActiveRecordPlugin arpMysql = new ActiveRecordPlugin(dsMysql);
         arpMysql.addMapping(Teacher.TABLE_NAME, "teacherId", Teacher.class);
         arpMysql.addMapping(Lesson.TABLE_NAME, "lessonId", Lesson.class);
-        arpMysql.addMapping(Profession.TABLE_NAME, "professionId", Profession.class);
+        arpMysql.addMapping(Profession.TABLE_NAME, "professionId",
+                Profession.class);
         arpMysql.addMapping(TestModel.TABLE_NAME, "testId", TestModel.class);
         arpMysql.addMapping(TestPage.TABLE_NAME, "pageId", TestPage.class);
         arpMysql.addMapping(Student.TABLE_NAME, "stuId", Student.class);

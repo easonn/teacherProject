@@ -45,7 +45,7 @@ public class TestModel extends Model<TestModel> {
     }
 
     public TestModel findInfoById(String testId) {
-        String sql = "SELECT testTitle,testInfo,optionA,optionB,optionC,optionD,teacherName,testType,lessonName,lessonId FROM "
+        String sql = "SELECT testTitle,testInfo,optionA,optionB,optionC,optionD,teacherName,testType,lessonName,lessonId,testCheck FROM "
                 + TABLE_NAME + " WHERE testId = ?";
         return findFirst(sql, testId);
     }

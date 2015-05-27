@@ -27,6 +27,7 @@ public class TestController extends Controller {
                 "teacherName");
         model.set("teacherName", teacherName);
         model.set("teacherId", teacherId);
+        model.set("testCheck", "T");
         model.save();
         redirect("/test/getLists");
     }
@@ -85,6 +86,7 @@ public class TestController extends Controller {
             testpage.set("teacherName", getSessionAttr("teacherName"));
             testpage.set("cdatetime", BasicTools.getTime());
             testpage.set("testStr", testInfoStr);
+            testpage.set("testCheck", "F");
             testpage.save();
             content = new Content(testpage, stuClass, lessonId);
         }

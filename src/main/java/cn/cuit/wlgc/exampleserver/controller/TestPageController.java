@@ -27,9 +27,9 @@ public class TestPageController extends Controller {
         String msg = "";
         if (testList.size() > 0) {
             status = "T";
-            msg = "一共" + testList.size() + "个题目";
+            msg = testList.size() + "";
         } else {
-            msg = "没有题目";
+            msg = "0";
         }
         testInfo.put("status", status);
         testInfo.put("msg", msg);

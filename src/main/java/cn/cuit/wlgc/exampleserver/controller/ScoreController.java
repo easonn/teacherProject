@@ -37,7 +37,6 @@ public class ScoreController extends Controller {
         }
         info.put("check", check);
         info.put("msg", msg);
-
         renderJson(JsonKit.toJson(info));
     }
 }

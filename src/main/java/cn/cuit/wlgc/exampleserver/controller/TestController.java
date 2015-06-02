@@ -66,6 +66,7 @@ public class TestController extends Controller {
         Content content = null;
         String stuClass = getPara("stuClass");
         String lessonId = getPara("lessonId");
+        String remark = getPara("remark");
         List<TestModel> testList = getSessionAttr("testModelList");
         if (null == testList) {
             renderText("error");
@@ -87,6 +88,7 @@ public class TestController extends Controller {
             testpage.set("cdatetime", BasicTools.getTime());
             testpage.set("testStr", testInfoStr);
             testpage.set("testCheck", "F");
+            testpage.set("remark", remark);
             testpage.save();
             content = new Content(testpage, stuClass, lessonId);
         }

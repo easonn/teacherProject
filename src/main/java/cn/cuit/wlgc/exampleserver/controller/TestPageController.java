@@ -15,7 +15,8 @@ public class TestPageController extends Controller {
 
     public void downloadpage() {
         String pageId = getPara("pageId");
-        String testStr = TestPage.DAO.findById(pageId).getStr("testStr");
+        TestPage testPageModel = TestPage.DAO.findById(pageId);
+        String testStr = testPageModel.getStr("testStr");
         String[] testArray = testStr.split(";");
         Map<String, Object> testInfo = new HashMap<String, Object>();
         List<TestModel> testList = new ArrayList<TestModel>();
@@ -34,6 +35,7 @@ public class TestPageController extends Controller {
         testInfo.put("status", status);
         testInfo.put("msg", msg);
         testInfo.put("testInfo", testList);
+        testInfo.put("testName", testPageModel.getStr("remark"));
         String jsonStr = JsonKit.toJson(testInfo);
         renderJson(jsonStr);
     }

@@ -111,8 +111,10 @@
 															<div class="span4">
 																班级：<input class="input-medium" placeholder="必填项"
 																	name="stuClass" type="text" class="" id="stuClass"
-																	required><br> <br /> <a
-																	href="./test/getLists">继续选题</a>
+																	required><br> <br />试卷名：<input
+																	class="input-medium" placeholder="必填项" name="remark"
+																	type="text" class="" id="remark" required><br>
+																<br /> <a href="./test/getLists">继续选题</a>
 																<button type="submit" class="btn btn-primary">确认</button>
 															</div>
 														</div>

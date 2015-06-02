@@ -1,18 +1,20 @@
 package cn.cuit.wlgc.exampleserver.controller;
 
+import java.util.Map;
 import java.util.UUID;
 
 import cn.cuit.wlgc.exampleserver.common.Constant;
 import cn.cuit.wlgc.exampleserver.interceptor.TeacherInterceptor;
+import cn.cuit.wlgc.exampleserver.model.Score;
 import cn.cuit.wlgc.exampleserver.model.Teacher;
 import cn.cuit.wlgc.exampleserver.tool.StringMD5;
 import cn.cuit.wlgc.exampleserver.tool.StringRandom;
 
-import com.jfinal.plugin.ehcache.EvictInterceptor;
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
 import com.jfinal.ext.render.CaptchaRender;
 import com.jfinal.plugin.ehcache.CacheName;
+import com.jfinal.plugin.ehcache.EvictInterceptor;
 
 public class TeacherController extends Controller {
 
@@ -106,9 +108,14 @@ public class TeacherController extends Controller {
             Teacher teacher = model.login();
             boolean check = null != teacher;
             if (check) {
+                Map<String, String> scoreInfo = Score.DAO.getAvg(teacher
+                        .getStr("teacherId"));
                 setSessionAttr("teacherName", teacher.getStr("teacherName"));
                 setSessionAttr("teacherDem", teacher.getStr("teacherDem"));
                 setSessionAttr("teacherId", teacher.getStr("teacherId"));
+                setSessionAttr("scoreAvg", scoreInfo.get("scoreAvg"));
+                setSessionAttr("scoreNumber", scoreInfo.get("scoreNumber"));
+                setSessionAttr("scoreName", scoreInfo.get("scoreName"));
                 setAttr("teacher", teacher);
                 redirect("/index");
             } else {

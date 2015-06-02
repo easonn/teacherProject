@@ -22,9 +22,12 @@ public class ScoreController extends Controller {
         String stuId = getPara("stuId");
         double score = Double.parseDouble(getPara("score"));
         String pageId = getPara("pageId");
+        String teacherId = getPara("teacherId");
+        String testName = getPara("testName");
         Student stu = Student.DAO.findById(stuId);
         boolean check = Score.DAO.set("scoreId", UUID.randomUUID().toString())
-                .set("score", score)
+                .set("score", score).set("teacherId", teacherId)
+                .set("date", pageId.substring(0, 10)).set("testName", testName)
                 .set("classId", stu.getStr("stuId").substring(0, 7))
                 .set("stuId", stu.getStr("stuId"))
                 .set("stuName", stu.getStr("stuName")).set("pageId", pageId)
